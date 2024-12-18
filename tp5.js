@@ -104,7 +104,7 @@ return mots.join(' ');
 console.log(chaquePremiereLettreEnCapital(phrase));
 
 function calcul(n){
-    return function fonct(nb){
+    return function (nb){
         return nb*n;
     };
 }
@@ -112,5 +112,48 @@ function calcul(n){
 let calcul1 =calcul(5);
 let calcul2 =calcul(3)
 
+console.log("Resultat")
 console.log(calcul1(2));
 console.log(calcul2(3));
+
+
+function creerGestionnaire(){
+let taches = [];
+
+return {
+  ajouterTache: function(description) {
+      taches.push({
+          description: description,
+          terminee: false
+      });
+  },
+
+  terminerTache: function(index) {
+    if (index >= 0 && index < taches.length) {
+        taches[index].terminee = true;
+    } else {
+        console.log("Index invalide");
+    }
+},
+
+afficherTaches: function(){
+      for (let i = 0; i < taches.length; i++) {
+        const task = taches[i];
+        const statut = task.terminee ? "Terminée" : "Non terminée";
+        console.log(`Tâche ${i + 1}: ${task.description} - ${statut}`);
+      };
+    }
+};
+}
+
+  const gestionnaire = creerGestionnaire();
+
+  gestionnaire.ajouterTache("Faire les courses");
+  gestionnaire.ajouterTache("Aller à la salle de sport");
+
+gestionnaire.terminerTache(0); 
+gestionnaire.terminerTache(1); 
+
+// Afficher les tâches après modification
+console.log("\nAffichage des tâches après modification:");
+gestionnaire.afficherTaches();

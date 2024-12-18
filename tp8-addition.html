@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calcul() {
+            let element1 = document.querySelector("#ch1").value;
+            let element2 = document.querySelector("#ch2").value;
+            if (isNaN(element1) || isNaN(element2)) {
+                throw "Vous devez fournir un nombre valide";
+            }
+            let addition = parseFloat(element1) + parseFloat(element2);
+            const resultatSpan = document.querySelector('#resultat');
+            resultatSpan.textContent = `Le résultat de l'addition est : ${addition}`;
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <section>Bonjour !</section>
+    Champ1 <input id="ch1" type="text" name="champ1"><br>
+    Champ2 <input id="ch2" type="text" name="champ2"><br>
+     <input type="button" value="valider" onclick="calcul()"><br>
+    <span id="resultat"></span>
+
+
+</body>
+
+</html>

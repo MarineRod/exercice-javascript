@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function controleDeSaisie() {
+            let regex = /^[A-Za-zÀ-ÿ]+$/;
+            let prenom = document.querySelector("#prenom").value;
+            let nom = document.querySelector("#nom").value;
+            let dateDeNaissance = document.querySelector("#dateDeNaissance").value;
+            if (prenom.length < 3 || !regex.test(prenom)) {
+                throw "Le prénom doit contenir au moins 3 lettres et ne doit pas contenir de chiffres ou de caractères spéciaux.";
+                return false;
+            }
+
+            if (nom.length < 3 || !regex.test(nom)) {
+                throw "Le prénom doit contenir au moins 3 lettres et ne doit pas contenir de chiffres ou de caractères spéciaux.";
+                return false;
+            }
+        
+            if(dateDeNaissance ===""){
+                throw "Le champ 'dateDeNaissance' doit être renseigné."
+                return false;
+            }
+
+            alert("Formulaire valide !");
+            return true;
+
+        }
+    </script>
+</head>
+<body>
+    <h1>Formulaire de Contact</h1>
+        <label for="prenom">Prenom :</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Votre prenom">
+
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" placeholder="Votre nom" >
+
+        <label for="dateDeNaissance">Date de naissance :</label>
+        <input type="date" id="dateDeNaissance" name="dateDeNaissance" placeholder="Votre date de naissance">
+        <input type="button" value="Envoyer" onclick="controleDeSaisie()"><br>
+
+
+
+    </form>
+    
+</body>
+</html>
