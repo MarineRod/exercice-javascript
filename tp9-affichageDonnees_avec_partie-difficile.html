@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+    <title>Liste des pays</title>
+    <script>
+         let dataGlobal = []; // Variable globale pour stocker les données initiales
+         let isPopulationSortedAsc = null; // Indicateur de tri pour la population
+        function init() {
+            
+            fetch("https://restcountries.com/v2/all")
+                .then(res => {
+                    if (res.status === 200) {
+                        return res.json(); 
+                    } else {
+                        throw new Error(`Erreur HTTP : ${res.status}`); 
+                }})
+                .then(data =>{
+                    dataGlobal = data;
+                 afficherDonnees(data)
+                })
+                .catch(err => console.error("Erreur lors de la récupération des données :", err));
+       
+         // Ajouter un événement de clic sur l'entête "Population" pour trier
+         const populationHeader = document.querySelector('#population-icon').parentElement;
+            populationHeader.addEventListener('click', () => {
+                trierParPopulation();
+            });
+        }
+
+        function afficherDonnees(data) {
+            const container = document.querySelector("#resultats");
+            let html = ""; 
+
+            
+            for (let i = 0; i < data.length; i++) {
+                const nomPays = data[i].name;
+                const capitale = data[i].capital 
+                const population = data[i].population.toLocaleString();
+                const region = data[i].region 
+
+                
+                html += `
+                  <tr>
+                    <td>${nomPays}</td>
+                    <td>${capitale}</td>
+                    <td>${population}</td>
+                    <td>${region}</td>
+                  </tr>
+                `;
+            }
+
+           
+            container.innerHTML = html;
+        }
+
+        function trierParPopulation() {
+            // Trier les données en fonction de la population
+            if (isPopulationSortedAsc === null || isPopulationSortedAsc === false) {
+                // Tri croissant
+                dataGlobal.sort((a, b) => a.population - b.population);
+                isPopulationSortedAsc = true;
+                document.getElementById('population-icon').classList.remove('fa-sort', 'fa-sort-down');
+                document.getElementById('population-icon').classList.add('fa-sort-up');
+            } else {
+                // Tri décroissant
+                dataGlobal.sort((a, b) => b.population - a.population);
+                isPopulationSortedAsc = false;
+                document.getElementById('population-icon').classList.remove('fa-sort', 'fa-sort-up');
+                document.getElementById('population-icon').classList.add('fa-sort-down');
+            }
+
+            // Affichage des données triées
+            afficherDonnees(dataGlobal);
+        }
+    </script>
+</head>
+<body onload="init()">
+    <h1>Liste des pays</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Pays</th>
+                <th>Capitale</th>
+                <th>Population <i id="population-icon" class="fas fa-sort sort-icon"></i></th>
+                <th>Région</th>
+            </tr>
+        </thead>
+        <tbody id="resultats">
+        </tbody>
+</body>
+</html>

@@ -8,6 +8,7 @@ function initialiserDonnees(){
                 <th>Pays</th>
                 <th>Valeur (${data.unite})</th>
                 <th>Pourcentage</th>
+                <th>Pourcentage du total</th>
             </tr>
         </thead>
         <tbody>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des pays</title>
+    <script>
+        function init() {
+            
+            fetch("https://restcountries.com/v2/all")
+                .then(res => {
+                    if (res.status === 200) {
+                        return res.json(); 
+                    } else {
+                        throw new Error(`Erreur HTTP : ${res.status}`); 
+                }})
+                .then(data => afficherDonnees(data)) 
+                .catch(err => console.error("Erreur lors de la récupération des données :", err));
+        }
+
+        function afficherDonnees(data) {
+            const container = document.querySelector("#resultats");
+            let html = ""; 
+
+            
+            for (let i = 0; i < data.length; i++) {
+                const nomPays = data[i].name;
+                const capitale = data[i].capital 
+                const population = data[i].population.toLocaleString();
+                const region = data[i].region 
+
+                
+                html += `
+                  <tr>
+                    <td>${nomPays}</td>
+                    <td>${capitale}</td>
+                    <td>${population}</td>
+                    <td>${region}</td>
+                  </tr>
+                `;
+            }
+
+           
+            container.innerHTML = html;
+        }
+    </script>
+</head>
+<body onload="init()">
+    <h1>Liste des pays</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Pays</th>
+                <th>Capitale</th>
+                <th>Population</th>
+                <th>Région</th>
+            </tr>
+        </thead>
+        <tbody id="resultats">
+        </tbody>
+</body>
+</html>
