@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="fichier-css-tableau.css">
+        <script src="monFichier5.js"></script>
+    </head>
+    <body onload="initialiserDonnees()">
+        <label for="prenom">Minimum :</label>
+        <input type="text" id="minimum" name="minimum" placeholder="Votre valeur">
+
+        <label for="nom">Maximum :</label>
+        <input type="text" id="maximum" name="maximum" placeholder="Votre valeur" >
+        <input type="button" value="Valider" onclick="controleDeSaisie()"><br>
+        <span id="listePays"></span>
+
+    </body>
+</html>

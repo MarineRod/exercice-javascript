@@ -1,0 +1,37 @@
+
+
+
+table {
+    border-collapse: collapse;
+    border-left: none;
+    border-right: none;
+    width: 100%; 
+    margin: 20px auto; 
+}
+
+
+th {
+    border-top: 3px solid blue;
+    border-bottom: 3px solid blue;
+    text-align: center;
+   
+}
+
+
+tr {
+    border-top: 1px solid blue;
+    border-bottom: 1px solid blue;
+}
+
+
+th, td {
+    border-left: none;
+    border-right: none;
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+td:first-child img {
+    height: auto; 
+    margin: 0 auto; 
+}
