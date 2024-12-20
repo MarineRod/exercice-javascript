@@ -1,19 +1,25 @@
+/*Exercice FONCTIONCONSTANTE*/
 function fonction(){
     return 33;
 }
-
-console.log(fonction);
+fonction()
 
 let resultat = fonction();
 
 console.log(resultat);
 
+/*Exercice BONJOURUNTEL*/
+
 function chaine(prenom){
-    console.log("Bonjour"+prenom);
+    return"Bonjour "+prenom;
 }
 
-chaine("Lulu");
+let resultat2 = chaine("Lulu");
+console.log(resultat2);
 
+
+
+/* Exercice FONCTIONCALCUL*/
 
 function calcul(a,b){
     return a*b+a+b;
@@ -33,7 +39,7 @@ console.log(calc2);*/
 
 
 
-
+/*FONCTIONCONTROLETABLEAU*/
 function verif(array){
     for(let i=0; i<array.length; i++){
         if (isNaN(array[i])){
@@ -53,6 +59,8 @@ console.log(verif(array1));
 console.log(verif(array2));
 console.log(verif(array3));
 
+
+/*Exercice FONCTIONMOYENNE*/
 function fonctionCalculs(array){
 
     if (isNaN(array)) {
@@ -77,7 +85,7 @@ console.log(fonctionCalculs(array1));
 console.log(fonctionCalculs(array2));
 console.log(fonctionCalculs(array3));
 
-
+/*Exercice FONCTIONMAJ*/
 let nom1 ="ratatouille"
 function chaineMajPremiereLettre (nom){
     let premiereLettre = nom.charAt(0).toUpperCase();  
@@ -88,7 +96,7 @@ function chaineMajPremiereLettre (nom){
 
 console.log(chaineMajPremiereLettre(nom1));
 
-
+/*Exercice FONCTIONPHRASEMAJ*/
 let phrase = "bonjour tout le monde"
 
 function chaquePremiereLettreEnCapital (chaine){
@@ -103,6 +111,9 @@ return mots.join(' ');
 
 console.log(chaquePremiereLettreEnCapital(phrase));
 
+
+
+/*Exercice FONCTION QUI RETOURNE UNE FONCTION*/
 function calcul(n){
     return function (nb){
         return nb*n;
@@ -116,7 +127,7 @@ console.log("Resultat")
 console.log(calcul1(2));
 console.log(calcul2(3));
 
-
+/*Exercice : GESTIONNAIRE DE TACHES*/
 function creerGestionnaire(){
 let taches = [];
 
